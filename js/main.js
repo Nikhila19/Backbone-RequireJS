@@ -18,10 +18,18 @@ require.config({
 
 // var serviceItem = { title: 'web development', price: 200};
 var items = [
-  { title: 'web development', price: 200},
-  { title: 'web design', price: 250},
-  { title: 'photography', price: 100},
-  { title: 'coffee drinking', price: 10}
+  { service_id: 1, title: 'web development', price: 200,
+    details: 'this is a service of web development'
+  },
+  { service_id: 2, title: 'web design', price: 250,
+    details: 'this are the details of the web design service'
+  },
+  { service_id: 3, title: 'photography', price: 100,
+    details: 'photography details'
+  },
+  { service_id: 4, title: 'coffee drinking', price: 10,
+    details: 'this is the way to drink your coffee'
+  }
 ]
 
 require(['jquery', 'libs/underscore', 'libs/backbone', 'models/service', 'collections/services', 'views/servicesCollectionView'],  
@@ -32,7 +40,6 @@ require(['jquery', 'libs/underscore', 'libs/backbone', 'models/service', 'collec
         serviceModels.push(new ServiceModel(item));
       })
       var serviceCollection = new ServicesCollection(serviceModels);
-      // alert(JSON.stringify(serviceCollection.models));
       new ServicesCollectionView({collection: serviceCollection});
     });
   }

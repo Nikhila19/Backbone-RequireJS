@@ -3,17 +3,19 @@ define(['libs/backbone', 'models/service'],
 
     var ServiceCollection = Backbone.Collection.extend({
       model: serviceModel,
+
+      // initialize: function(options) {
+      //   //Must explore ways of instantiating individual models here in the collection
+
+      //   // options.items.forEach(function(item) {
+      //   //   alert("in collection " + JSON.stringify(item))
+      //   //   this.add(new serviceModel(item));
+      //   // }.bind(this));
+      //   Backbone.Collection.prototype.initialize.apply(this,arguments);
+      //   return this;
+      // },
       getChecked: function() {
         return this.where({checked:true});
-      }, 
-      initialize: function(options) {
-        // options.items.forEach(function(item) {
-        //   alert("in collection " + JSON.stringify(item))
-        //   this.add(new serviceModel(item));
-        // }.bind(this));
-        Backbone.Collection.prototype.initialize.apply(this,arguments);
-        alert("in collection " + JSON.stringify(this.models));
-        return this;
       }
 
     });

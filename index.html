@@ -8,6 +8,7 @@
 
     <!-- The main CSS file -->
     <!-- <link href="assets/css/style.css" rel="stylesheet" /> -->
+    <link href="css/bootstrap.css" rel="stylesheet" />
 
     </head>
 
@@ -15,9 +16,40 @@
       <form id="main" method="post" action="submit.php">
         <h1>My Services</h1>
 
+        
+<!-- 
         <ul id="services">
-          <!-- The services will be inserted here -->
+        <script id="itemTemplate" type="text/template">
+          <div>
+            <input type="checkbox" id="<%=service_id %>" value="<%= checked %>" name="<%=title%>">
+            <%= title %><span> $<%= price %></span>
+
+          </div>
+        </script>
         </ul>
+ -->
+
+        <div id="services" role="tablist" aria-multiselectable="true">
+          <script id="itemTemplate" type="text/template">
+            <!-- <div class="card"> -->
+              <div class="card-header" role="tab" id="heading<%=service_id%>">
+                <h5 class="mb-0">
+                  <input type="checkbox" class="check" value="<%= checked %>" name="<%=title%>">
+
+                  <a data-toggle="collapse" data-parent="#services" href="#service<%=service_id%>" aria-expanded="true" aria-controls="">
+                    <%= title %><span> $<%= price %></span>
+                  </a>
+                </h5>
+              </div>
+
+              <div id="service<%=service_id%>" class="collapse" role="tabpanel" aria-labelledby="heading<%=service_id%>">
+                <div class="card-block">
+                  <%=details%>
+                </div>
+              </div>
+            <!-- </div> -->
+          </script>
+        </div>
 
         <p id="total">total: <span>$0</span></p>
 
@@ -27,13 +59,7 @@
       <script src="js/libs/jquery.js"></script>
       <script src="js/libs/underscore.js"></script>
       <script src="js/libs/backbone.js"></script>
+      <script src="js/libs/bootstrap.js"></script>
       <script data-main="js/main" src="js/libs/require.js"></script>
-      <!-- <script src="js/main.js"></script> -->
-      <!-- <script src="js/models/singleFlowerModel.js"></script> -->
-      <!-- <script src="js/views/singleFlowerView.js"></script> -->
-      <!-- <script src="js/views/allFlowersView.js"></script> -->
-      <!-- <script src="js/collections/allFlowers.js"></script> -->
-      <!-- <script src="js/routes/router.js"></script> -->
-      <!-- <script src="js/flowerApp.js"></script> -->
     </body>
 </html>
